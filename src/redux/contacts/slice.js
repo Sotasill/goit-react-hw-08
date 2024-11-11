@@ -6,6 +6,7 @@ import {
   updateContact,
 } from "./operations";
 import { createSlice } from "@reduxjs/toolkit";
+
 const initialState = {
   items: [],
   loading: false,
@@ -80,5 +81,9 @@ const slice = createSlice({
         state.error = null;
       }),
 });
+
+export const selectFilteredContacts = (state) => {
+  return state.contacts.items;
+};
 
 export default slice.reducer;

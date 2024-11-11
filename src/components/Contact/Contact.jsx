@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { FaUser, FaPhoneAlt, FaEdit } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { deleteContact, updateContact } from "../../redux/contacts/operations";
 import css from "./Contact.module.css";
@@ -9,83 +7,83 @@ import DelModal from "../DelModal/DelModal";
 import EditModal from "../EditModal/EditModal";
 
 export default function Contact({ data: { id, name, number } }) {
-  const [open, setOpen] = useState(false);
-  const [openEdit, setOpenEdit] = useState(false);
-  const [editName, setEditName] = useState(name);
-  const [editNumber, setEditNumber] = useState(number);
+  const [modalState, setModalState] = useState({
+    deleteOpen: false,
+    editOpen: false,
+    editName: name,
+    editNumber: number
+  });
   const dispatch = useDispatch();
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handleModalToggle = (modalType, value) => {
+    setModalState(prev => ({...prev, [modalType]: value}));
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleDelete = async () => {
+    try {
+      await dispatch(deleteContact(id)).unwrap();
+      toast.success("Successfully deleted!");
+      handleModalToggle('deleteOpen', false);
+    } catch  {
+      toast.error("Failed to delete contact");
+    }
   };
 
-  const handleDelete = () => {
-    dispatch(deleteContact(id))
-      .unwrap()
-      .then(() => {
-        toast.success("Successfully deleted!");
-      });
-    handleClose();
+  const handleUpdate = async () => {
+    try {
+      await dispatch(
+        updateContact({
+          id,
+          name: modalState.editName,
+          number: modalState.editNumber,
+        })
+      ).unwrap();
+      toast.success("Successfully updated!");
+      handleModalToggle('editOpen', false);
+    } catch {
+      toast.error("Failed to update contact");
+    }
   };
 
-  const handleClickOpenEdit = () => {
-    setOpenEdit(true);
-  };
-
-  const handleCloseEdit = () => {
-    setOpenEdit(false);
-  };
-
-  const handleUpdate = () => {
-    dispatch(
-      updateContact({
-        id,
-        name: editName,
-        number: editNumber,
-      })
-    )
-      .unwrap()
-      .then(() => {
-        toast.success("Successfully updated!");
-      });
-    handleCloseEdit();
+  const handleEditChange = (field, value) => {
+    setModalState(prev => ({...prev, [field]: value}));
   };
 
   return (
     <div className={css.div}>
       <p className={css.p}>
-        <FaUser /> {name}
+        {name}
       </p>
       <p className={css.p}>
-        <FaPhoneAlt /> {number}
+        {number}
       </p>
-      <button className={css.btn} onClick={handleClickOpen}>
-        <MdDelete style={{ width: "25px", height: "25px" }} />
+      <button 
+        className={css.btn} 
+        onClick={() => handleModalToggle('deleteOpen', true)}
+        aria-label="Delete contact"
+      >
+        Delete
       </button>
       <button
         className={css.editBtn}
-        style={{ width: "25px", height: "25px" }}
-        onClick={handleClickOpenEdit}
+        onClick={() => handleModalToggle('editOpen', true)}
+        aria-label="Edit contact"
       >
-        <FaEdit />
+        Edit
       </button>
       <DelModal
-        open={open}
-        handleClose={handleClose}
+        open={modalState.deleteOpen}
+        handleClose={() => handleModalToggle('deleteOpen', false)}
         handleDelete={handleDelete}
       />
       <EditModal
-        open={openEdit}
-        handleClose={handleCloseEdit}
+        open={modalState.editOpen}
+        handleClose={() => handleModalToggle('editOpen', false)}
         handleUpdate={handleUpdate}
-        editName={editName}
-        setEditName={setEditName}
-        editNumber={editNumber}
-        setEditNumber={setEditNumber}
+        editName={modalState.editName}
+        setEditName={(value) => handleEditChange('editName', value)}
+        editNumber={modalState.editNumber}
+        setEditNumber={(value) => handleEditChange('editNumber', value)}
       />
     </div>
   );

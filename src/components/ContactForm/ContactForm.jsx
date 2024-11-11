@@ -4,13 +4,9 @@ import { useId } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import ValidationShema from "../../validationshema"; 
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contactsOps";
+import { addContact } from "../../redux/contacts/operations";
 // import { Button, TextField } from "@mui/material";
 import toast from "react-hot-toast";
-
-
-
-
 
 const initialValues = {
   name: "",
@@ -35,22 +31,12 @@ function ContactForm() {
     actions.resetForm();
   };
 
-
- 
-
-    
-
-
-
-
   return (
     <Formik
       initialValues={initialValues}
       onSubmit={handleSubmit}
       validationSchema={ValidationShema}
     >
-
-
       <Form className={css.form}>
         <div className={css.formElementWrapper}>
           <label htmlFor={nameFieldId} className={css.label}>
@@ -96,48 +82,42 @@ function ContactForm() {
 
 export default ContactForm;
 
+  // return (
+  //   <Formik
+  //   initialValues={initialValues}
+  //   onSubmit={handleSubmit}
+  //   validationSchema={FeedbackSchema}
+  // >
+  //   {({ errors, touched, getFieldProps }) => (
+  //     <Form className={css.form}>
+  //       <div className={css.field}>
+  //         <TextField
+  //           variant="filled"
+  //           label="Name"
+  //           id={nameFieldId}
+  //           {...getFieldProps('name')}
+  //           error={touched.name && Boolean(errors.name)}
+  //           helperText={touched.name && errors.name}
+  //           fullWidth
+  //         />
+  //       </div>
 
+  //       <div className={css.field}>
+  //         <TextField
+  //           variant="filled"
+  //           label="Number"
+  //           id={numberFieldId}
+  //           {...getFieldProps('number')}
+  //           error={touched.number && Boolean(errors.number)}
+  //           helperText={touched.number && errors.number}
+  //           fullWidth
+  //         />
+  //       </div>
 
-
-
-
-  
-    // return (
-    //   <Formik
-    //   initialValues={initialValues}
-    //   onSubmit={handleSubmit}
-    //   validationSchema={FeedbackSchema}
-    // >
-    //   {({ errors, touched, getFieldProps }) => (
-    //     <Form className={css.form}>
-    //       <div className={css.field}>
-    //         <TextField
-    //           variant="filled"
-    //           label="Name"
-    //           id={nameFieldId}
-    //           {...getFieldProps('name')}
-    //           error={touched.name && Boolean(errors.name)}
-    //           helperText={touched.name && errors.name}
-    //           fullWidth
-    //         />
-    //       </div>
-
-    //       <div className={css.field}>
-    //         <TextField
-    //           variant="filled"
-    //           label="Number"
-    //           id={numberFieldId}
-    //           {...getFieldProps('number')}
-    //           error={touched.number && Boolean(errors.number)}
-    //           helperText={touched.number && errors.number}
-    //           fullWidth
-    //         />
-    //       </div>
-
-    //       <Button variant="contained" color="primary" type="submit" className={css.btn}>
-    //         Add contact
-    //       </Button>
-    //     </Form>
-    //   )}
-    // </Formik>
-    // );
+  //       <Button variant="contained" color="primary" type="submit" className={css.btn}>
+  //         Add contact
+  //       </Button>
+  //     </Form>
+  //   )}
+  // </Formik>
+  // );

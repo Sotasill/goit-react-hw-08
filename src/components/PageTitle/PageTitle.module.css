@@ -1,0 +1,11 @@
+.heading {
+  font-size: 36px;
+  color: #2c3e50;
+  margin-bottom: 24px;
+  text-align: center;
+  font-weight: bold;
+  padding: 16px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #e0e0e0;
+}

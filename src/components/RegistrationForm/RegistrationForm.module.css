@@ -1,0 +1,23 @@
+.form {
+  width: 320px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.label div {
+  width: 100%;
+}
+
+.label:last-of-type {
+  margin-bottom: 24px;
+}
