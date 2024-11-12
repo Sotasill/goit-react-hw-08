@@ -8,6 +8,7 @@ export default {
     login: "Увійти",
     register: "Реєстрація",
     logout: "Вийти",
+    registerButton: "Зареєструватися",
   },
   home: {
     welcome: "Зберігає ваші контакти",

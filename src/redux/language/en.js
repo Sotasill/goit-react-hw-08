@@ -6,8 +6,9 @@ export default {
   },
   auth: {
     login: "Login",
-    register: "Register",
+    register: "Register your account",
     logout: "Logout",
+    registerButton: "Register",
   },
   home: {
     welcome: "Keeps your contacts",

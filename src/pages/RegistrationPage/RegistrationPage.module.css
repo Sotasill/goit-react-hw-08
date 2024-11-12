@@ -1,11 +1,58 @@
-.container {
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 40px;
-  max-width: 500px;
-  margin: 0 auto;
+  background: linear-gradient(135deg, #1976d2, #a777e3);
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
-@media screen and (max-width: 480px) {
-  .container {
+.container {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.glassEffect {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 40px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .wrapper {
     padding: 20px;
   }
-} 
+
+  .glassEffect {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    padding: 15px;
+  }
+
+  .glassEffect {
+    padding: 20px;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 320px) {
+  .wrapper {
+    padding: 10px;
+  }
+
+  .glassEffect {
+    padding: 15px;
+  }
+}
