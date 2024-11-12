@@ -6,9 +6,12 @@ export default {
   },
   auth: {
     login: "Login",
-    register: "Register your account",
+    register: "Register your account", 
     logout: "Logout",
     registerButton: "Register",
+    agreement: "I agree to the terms of the license agreement",
+    agreementTitle: "License Agreement",
+    agreementText: "By using the \"Contact Manager\" service (\"Service\") provided by the company (\"Company\"), you agree to the terms of this License Agreement. If you do not agree with these terms, please do not use the Service.\n\nThe Company grants a limited, non-exclusive license to access and use the Service for personal, non-commercial purposes. Unauthorized actions, such as tampering with the Service, collecting data from other users, or using the Service for illegal activities, are strictly prohibited.\n\nAll content, logos, and trademarks within the Service are owned by the Company or its licensors. You may not reproduce, modify, or distribute this content without permission. The Service processes user data in compliance with the Privacy Policy, which users consent to by using the Service.\n\nThe Service is provided \"as is\" with no guarantees of performance. The Company is not liable for damages arising from the use or inability to use the Service. The Company reserves the right to terminate access if any terms of this Agreement are violated.\n\nFor questions or additional details, contact information is provided on the Service website.",
   },
   home: {
     welcome: "Keeps your contacts",

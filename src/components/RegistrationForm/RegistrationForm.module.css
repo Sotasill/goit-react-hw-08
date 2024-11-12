@@ -34,10 +34,26 @@
 }
 
 .inputContainer:hover svg {
-  color: #03172b; /* цвет Material-UI primary */
+  color: #03172b; 
 }
 
-/* При фокусе на input меняем цвет иконки */
+
 .inputContainer:has(.input:focus) svg {
   color: #01101e;
 }
+
+
+
+.modalContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background-color: #fff;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+  padding: 32px;
+  max-height: 80vh;
+  overflow: auto;
+}
+
