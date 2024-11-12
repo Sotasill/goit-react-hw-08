@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from 'react-i18next';
 import PageTitle from "../../components/PageTitle/PageTitle";
 import ContactList from "../../components/ContactList/ContactList";
 import ContactForm from "../../components/ContactForm/ContactForm";
@@ -11,6 +12,7 @@ import css from "./ContactPage.module.css";
 export default function ContactsPage() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectLoading);
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -18,10 +20,12 @@ export default function ContactsPage() {
 
   return (
     <div className={css.container}>
-      <PageTitle>Your contacts</PageTitle>
+      <PageTitle>{t('contacts.title')}</PageTitle>
       <div className={css.content}>
         <ContactForm />
-        <div className={css.loading}>{isLoading && "Request in progress..."}</div>
+        <div className={css.loading}>
+          {isLoading && t('contacts.loading')}
+        </div>
         <SearchBox />
         <ContactList />
       </div>

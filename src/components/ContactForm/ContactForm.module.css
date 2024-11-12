@@ -1,69 +1,69 @@
-
-
-
-
 .form {
-    border: 2px solid #BCC5FF;
-    background-color: #e7a61a;
-    min-width: 800px;
-    font-size: 20px;
-    border-radius: 10px 10px 0px 0px;
-    
-box-shadow: -2px 7px 30px 0px rgba(0,0,0,0.75);
-
-padding: 20px;
-    margin-bottom: 60px;
+    border: 1px solid #e0e0e0;
+    background-color: #fff;
+    max-width: 800px;
+    font-size: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin: 0 auto 20px;
 }
 
-
 .formElementWrapper {
-    border: 1px solid #000;
-    padding: 20px;
-    background-color: #BCC5FF;
-    margin-bottom: 30px;
+    
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    font-size: 28px;
-    font-weight: 600;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 .input {
     height: 40px;
-    background-color:  #e7a61a;
-    box-shadow: -2px 7px 30px 0px rgba(0,0,0,0.75);
-    transition: all;
-    
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 16px;
+    color: #2c3e50;
+    transition: all 0.3s ease;
 }
 
-.input:hover, .input:active {
-    outline: #e7a61a;
-    background-color: transparent;
-    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+.input:hover, .input:focus {
+    border-color: #BCC5FF;
+    outline: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.input::-webkit-input-placeholder { color: #000; font-size: 20px; text-align: center; }
+.input::-webkit-input-placeholder { 
+    color: #999;
+    font-size: 16px;
+}
 
-.input:focus::-webkit-input-placeholder { color: transparent; }
-
+.input:focus::-webkit-input-placeholder {
+    color: transparent;
+}
 
 .errorMessage {
-    
-    color: red;
+    color: #ff4d4d;
+    font-size: 14px;
+    margin-top: 5px;
 }
 
-    
 .submitButton {
-    background-color: #BCC5FF;
-    border: 1px solid #000;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
     border-radius: 4px;
     width: 100%;
-    box-shadow: -2px 7px 30px 0px rgba(0,0,0,0.75);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    color: #2c3e50;
+    text-align: center;
+    padding: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .submitButton:hover {
-    background-color: #0f2196;
-    color: aliceblue;
-    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
-    
+    background-color: #BCC5FF;
+    color: #fff;
+    border-color: #BCC5FF;
 }

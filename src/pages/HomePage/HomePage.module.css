@@ -1,28 +1,19 @@
 .container {
-  padding: 20px;
+  padding: 40px;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .content {
-  margin-top: 30px;
   display: flex;
-  gap: 40px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .features {
-  flex: 1;
-  min-width: 300px;
-  background-color: #f5f5f5;
   padding: 20px;
+  background: #f5f5f5;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.features h2 {
-  color: #2c3e50;
-  margin-bottom: 20px;
 }
 
 .features ul {
@@ -31,42 +22,56 @@
 }
 
 .features li {
-  margin-bottom: 15px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 16px;
-  color: #34495e;
-}
-
-.features li span {
-  font-size: 20px;
+  margin: 15px 0;
 }
 
 .welcome {
-  flex: 1;
-  min-width: 300px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.welcome p {
-  font-size: 18px;
-  line-height: 1.6;
-  color: #2c3e50;
-  margin-bottom: 20px;
-}
-
-.cta {
-  background-color: #e3f2fd;
-  padding: 20px;
-  border-radius: 8px;
   text-align: center;
 }
 
-.cta p {
-  font-weight: bold;
-  color: #1976d2;
-  margin: 0;
+.cta {
+  margin-top: 20px;
+}
+
+.fadeIn {
+  opacity: 0;
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 30px;
+  }
+  
+  .content {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  
+  .features, .welcome {
+    flex: 1;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    padding: 40px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 20px;
+  }
 }
