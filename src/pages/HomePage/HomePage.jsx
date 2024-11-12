@@ -1,9 +1,15 @@
 import { useTranslation } from 'react-i18next';
 import PageTitle from "../../components/PageTitle/PageTitle";
 import styles from "./HomePage.module.css";
+import { useState } from 'react';
 
 export default function HomePage() {
   const { t } = useTranslation();
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  const toggleAccordion = (index) => {
+    setActiveIndex(activeIndex === index ? null : index);
+  };
 
   return (
     <div className={styles.container}>
@@ -43,36 +49,64 @@ export default function HomePage() {
         </span>
       </PageTitle>
 
-      <div className={styles.content}>
-        <div className={styles.features}>
-          <h2>{t("home.features")}</h2>
-          <ul>
-            <li>
-              <span role="img" aria-label="add">
-                ➕
-              </span>{" "}
+     <div className={styles.content}>
+      <div className={styles.features}>
+        <h2>{t("home.features")}</h2>
+        <div className={styles.accordion}>
+          <div className={`${styles.accordionItem} ${activeIndex === 0 ? styles.active : ''}`}>
+            <button 
+              className={styles.accordionButton}
+              onClick={() => toggleAccordion(0)}
+            >
+              <span role="img" aria-label="add">➕</span>{" "}
               {t("home.createContacts")}
-            </li>
-            <li>
-              <span role="img" aria-label="view">
-                👀
-              </span>{" "}
+            </button>
+            <div className={styles.accordionContent}>
+              <p>{t("home.createContactsDesc")}</p>
+            </div>
+          </div>
+
+          <div className={`${styles.accordionItem} ${activeIndex === 1 ? styles.active : ''}`}>
+            <button 
+              className={styles.accordionButton}
+              onClick={() => toggleAccordion(1)}
+            >
+              <span role="img" aria-label="view">👀</span>{" "}
               {t("home.viewContacts")}
-            </li>
-            <li>
-              <span role="img" aria-label="edit">
-                ✏️
-              </span>{" "}
+            </button>
+            <div className={styles.accordionContent}>
+              <p>{t("home.viewContactsDesc")}</p>
+            </div>
+          </div>
+
+          <div className={`${styles.accordionItem} ${activeIndex === 2 ? styles.active : ''}`}>
+            <button 
+              className={styles.accordionButton}
+              onClick={() => toggleAccordion(2)}
+            >
+              <span role="img" aria-label="edit">✏️</span>{" "}
               {t("home.editContacts")}
-            </li>
-            <li>
-              <span role="img" aria-label="delete">
-                🗑️
-              </span>{" "}
+            </button>
+            <div className={styles.accordionContent}>
+              <p>{t("home.editContactsDesc")}</p>
+            </div>
+          </div>
+
+          <div className={`${styles.accordionItem} ${activeIndex === 3 ? styles.active : ''}`}>
+            <button 
+              className={styles.accordionButton}
+              onClick={() => toggleAccordion(3)}
+            >
+              <span role="img" aria-label="delete">🗑️</span>{" "}
               {t("home.deleteContacts")}
-            </li>
-          </ul>
+            </button>
+            <div className={styles.accordionContent}>
+              <p>{t("home.deleteContactsDesc")}</p>
+            </div>
+          </div>
         </div>
+      </div>
+    
 
         <div className={styles.welcome}>
           <p>{t("home.organize")}</p>

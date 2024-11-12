@@ -1,18 +1,39 @@
 import css from './AboutPage.module.css';
+import { useTranslation } from 'react-i18next';
 
 const AboutPage = () => {
+  const { t } = useTranslation();
+
   return (
     <div className={css.container}>
-      <h1 className={css.title}>О приложении</h1>
-      <p className={css.description}>Это приложение телефонной книги позволяет пользователям:</p>
+      <h1 className={css.title}>{t('about.title')}</h1>
+      <p className={css.description}>
+        {t('about.description')}
+      </p>
+      <h2 className={css.subtitle}>{t('about.features')}</h2>
       <ul className={css.list}>
-        <li className={css.listItem}>Создавать новые контакты</li>
-        <li className={css.listItem}>Просматривать существующие контакты</li>
-        <li className={css.listItem}>Редактировать информацию о контактах</li>
-        <li className={css.listItem}>Удалять ненужные контакты</li>
-        <li className={css.listItem}>Фильтровать контакты по имени</li>
+        <li className={css.listItem}>
+          <span role="img" aria-label="add">➕</span>{" "}
+          <strong>{t('about.createContacts')}:</strong> {t('about.createContactsDesc')}
+        </li>
+        <li className={css.listItem}>
+          <span role="img" aria-label="view">👀</span>{" "}
+          <strong>{t('about.viewContacts')}:</strong> {t('about.viewContactsDesc')}
+        </li>
+        <li className={css.listItem}>
+          <span role="img" aria-label="edit">✏️</span>{" "}
+          <strong>{t('about.editContacts')}:</strong> {t('about.editContactsDesc')}
+        </li>
+        <li className={css.listItem}>
+          <span role="img" aria-label="delete">🗑️</span>{" "}
+          <strong>{t('about.deleteContacts')}:</strong> {t('about.deleteContactsDesc')}
+        </li>
+        <li className={css.listItem}>
+          <span role="img" aria-label="search">🔍</span>{" "}
+          <strong>{t('about.search')}:</strong> {t('about.searchDesc')}
+        </li>
       </ul>
-      <p className={css.footer}>Для использования приложения необходимо зарегистрироваться или войти в существующий аккаунт.</p>
+      
     </div>
   );
 };

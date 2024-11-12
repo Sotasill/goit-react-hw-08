@@ -2,6 +2,7 @@
   padding: 40px;
   max-width: 1200px;
   margin: 0 auto;
+  margin-bottom: 100px;
 }
 
 .content {
@@ -48,6 +49,79 @@
     transform: translateY(0);
   }
 }
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.accordionItem {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.accordionItem:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.accordionButton {
+  width: 100%;
+  padding: 16px 20px;
+  background: #ffffff;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.accordionButton:hover {
+  background-color: #f5f5f5;
+}
+
+.accordionButton span {
+  margin-right: 12px;
+  font-size: 18px;
+}
+
+.accordionContent {
+  height: 0;
+  padding: 0 20px;
+  background-color: #f9f9f9;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.accordionItem.active .accordionContent {
+  height: auto;
+  padding: 16px 20px;
+}
+
+.accordionContent p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.accordionItem.active .accordionButton {
+  background-color: #f0f0f0;
+}
+
+
+.accordionItem .accordionButton span {
+  transition: transform 0.3s ease;
+}
+
+.accordionItem.active .accordionButton span {
+  transform: rotate(45deg);
+}
+  
 
 @media screen and (min-width: 768px) {
   .container {
