@@ -4,8 +4,11 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import { useTranslation } from 'react-i18next';
 
 const DeleteDialog = ({ open, handleClose, handleDelete }) => {
+  const { t } = useTranslation();
+
   return (
     <Dialog
       open={open}
@@ -13,18 +16,18 @@ const DeleteDialog = ({ open, handleClose, handleDelete }) => {
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
-      <DialogTitle id="alert-dialog-title">{"Confirm Deletion"}</DialogTitle>
+      <DialogTitle id="alert-dialog-title">{t('delete.confirmTitle')}</DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-description">
-          Are you sure you want to delete this contact?
+          {t('delete.confirmMessage')}
         </DialogContentText>
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose} color="primary">
-          Cancel
+          {t('delete.cancel')}
         </Button>
         <Button onClick={handleDelete} color="primary" autoFocus>
-          Delete
+          {t('delete.confirm')}
         </Button>
       </DialogActions>
     </Dialog>

@@ -9,14 +9,19 @@ import { selectLoading } from "../../redux/contacts/selectors";
 import SearchBox from "../../components/SearchBox/SearchBox";
 import css from "./ContactPage.module.css";
 
+
 export default function ContactsPage() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectLoading);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
+
+  useEffect(() => {
+    document.documentElement.lang = i18n.language;
+  }, [i18n.language]);
 
   return (
     <div className={css.container}>
@@ -29,6 +34,7 @@ export default function ContactsPage() {
         <SearchBox />
         <ContactList />
       </div>
+     
     </div>
   );
 }

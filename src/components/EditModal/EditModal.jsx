@@ -5,6 +5,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { TextField } from "@mui/material";
+import { useTranslation } from 'react-i18next';
 
 const EditDialog = ({
   open,
@@ -15,6 +16,8 @@ const EditDialog = ({
   editNumber,
   setEditNumber,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <Dialog
       open={open}
@@ -22,12 +25,12 @@ const EditDialog = ({
       aria-labelledby="edit-dialog-title"
       aria-describedby="edit-dialog-description"
     >
-      <DialogTitle id="edit-dialog-title">{"Edit Contact"}</DialogTitle>
+      <DialogTitle id="edit-dialog-title">{t('edit.title')}</DialogTitle>
       <DialogContent>
-        <DialogContentText>Update the contact details:</DialogContentText>
+        <DialogContentText>{t('edit.description')}</DialogContentText>
         <TextField
           variant="filled"
-          label="Name"
+          label={t('edit.nameLabel')}
           value={editName}
           onChange={(e) => setEditName(e.target.value)}
           fullWidth
@@ -35,7 +38,7 @@ const EditDialog = ({
         />
         <TextField
           variant="filled"
-          label="Phone Number"
+          label={t('edit.phoneLabel')}
           value={editNumber}
           onChange={(e) => setEditNumber(e.target.value)}
           fullWidth
@@ -44,10 +47,10 @@ const EditDialog = ({
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose} color="primary">
-          Cancel
+          {t('edit.cancel')}
         </Button>
         <Button onClick={handleUpdate} color="primary" autoFocus>
-          Update
+          {t('edit.update')}
         </Button>
       </DialogActions>
     </Dialog>

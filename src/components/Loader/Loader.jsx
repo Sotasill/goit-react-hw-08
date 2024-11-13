@@ -1,23 +1,17 @@
-import { useState, useEffect } from "react";
+import { Grid } from "react-loader-spinner";
 import css from "./Loader.module.css";
 
-export default function Loader({ children }) {
-  const [dots, setDots] = useState("");
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setDots((dots) => (dots.length < 3 ? dots + "." : ""));
-    }, 250);
-
-    return () => clearInterval(interval);
-  }, []);
-
+export default function Loader() {
   return (
-    <p className={css.text}>
-      <b>
-        {children}
-        {dots}
-      </b>
-    </p>
+    <div className={css.container}>
+      <Grid
+        height="80"
+        width="80"
+        color="#4fa94d"
+        ariaLabel="grid-loading"
+        radius="12.5"
+        visible={true}
+      />
+    </div>
   );
 }

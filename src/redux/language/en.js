@@ -42,6 +42,12 @@ export default {
     edit: "Edit",
     save: "Save",
     cancel: "Cancel",
+    sortAsc: "Sort alphabetically (A-Z)",
+    sortDesc: "Sort alphabetically (Z-A)",
+    enterName: "Enter your name",
+    enterNumber: "Enter your phone number",
+    addSuccess: "Contact successfully added",
+    addError: "Something went wrong! Try again later",
   },
   about: {
     title: "About Us",
@@ -65,4 +71,19 @@ export default {
       "ContactKeeper is a convenient and secure service for storing and managing your contacts. We help you easily store, find and update information about friends, colleagues and partners, ensuring the protection of your data and privacy.",
     copyright: "© 2024 ContactKeeper. All rights reserved.",
   },
+  delete: {
+    confirmTitle: "Confirm Deletion",
+    confirmMessage: "Are you sure you want to delete this contact?",
+    cancel: "Cancel",
+    confirm: "Delete",
+  },
+  edit: {
+    title: "Edit Contact",
+    description: "Update the contact details:",
+    nameLabel: "Name",
+    phoneLabel: "Phone Number",
+    cancel: "Cancel",
+    update: "Update",
+  },
+  
 };

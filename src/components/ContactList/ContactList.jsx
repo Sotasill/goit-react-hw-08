@@ -3,19 +3,21 @@ import css from "./ContactList.module.css";
 import { useSelector } from "react-redux";
 import { selectFilteredContacts, selectLoading, selectError } from "../../redux/contacts/selectors";
 import { useState } from "react";
+import { useTranslation } from 'react-i18next';
 
 function ContactList() {
   const contacts = useSelector(selectFilteredContacts) || [];
   const isLoading = useSelector(selectLoading);
   const error = useSelector(selectError);
   const [sortOrder, setSortOrder] = useState('asc');
+  const { t } = useTranslation();
 
   if (isLoading) {
-    return <div>Загрузка...</div>;
+    return <div>{t('contacts.loading')}</div>;
   }
 
   if (error) {
-    return <div>Ошибка: {error}</div>;
+    return <div>{t('contacts.error')}: {error}</div>;
   }
 
   const sortedContacts = [...contacts].sort((a, b) => {
@@ -35,7 +37,7 @@ function ContactList() {
         className={css.sortButton} 
         onClick={handleSort}
       >
-        {sortOrder === 'asc' ? 'По алфавиту (А-Я)' : 'По алфавиту (Я-А)'}
+        {sortOrder === 'asc' ? t('contacts.sortAsc') : t('contacts.sortDesc')}
       </button>
       <ul className={css.contactBox}>
         {sortedContacts.map((contact) => (

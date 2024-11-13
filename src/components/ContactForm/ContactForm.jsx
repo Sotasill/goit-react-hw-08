@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { addContact } from "../../redux/contacts/operations";
 // import { Button, TextField } from "@mui/material";
 import toast from "react-hot-toast";
+import { useTranslation } from 'react-i18next';
 
 const initialValues = {
   name: "",
@@ -17,15 +18,16 @@ function ContactForm() {
   const nameFieldId = useId();
   const numberFieldId = useId();
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const handleSubmit = (values, actions) => {
     dispatch(addContact(values))
       .unwrap()
       .then(() => {
-        toast.success("Successfully  added")
+        toast.success(t('contacts.addSuccess'))
       })
       .catch(() => {
-        toast.error("Something went wrong! Try again later")
+        toast.error(t('contacts.addError'))
       })
 
     actions.resetForm();
@@ -40,14 +42,14 @@ function ContactForm() {
       <Form className={css.form}>
         <div className={css.formElementWrapper}>
           <label htmlFor={nameFieldId} className={css.label}>
-            Name
+            {t('contacts.name')}
           </label>
           <Field
             type="text"
             name="name"
             id={nameFieldId}
             className={css.input}
-            placeholder="Enter your name"
+            placeholder={t('contacts.enterName')}
           />
           <ErrorMessage
             name="name"
@@ -57,14 +59,14 @@ function ContactForm() {
         </div>
         <div className={css.formElementWrapper}>
           <label htmlFor={numberFieldId} className={css.label}>
-            Number
+            {t('contacts.number')}
           </label>
           <Field
             type="text"
             name="number"
             id={numberFieldId}
             className={css.input}
-            placeholder="Enter your phone number"
+            placeholder={t('contacts.enterNumber')}
           />
           <ErrorMessage
             name="number"
@@ -73,7 +75,7 @@ function ContactForm() {
           />
         </div>
         <button type="submit" className={css.submitButton}>
-          Add contact
+          {t('contacts.addContact')}
         </button>
       </Form>
     </Formik>

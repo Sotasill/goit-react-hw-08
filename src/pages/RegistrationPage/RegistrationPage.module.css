@@ -4,7 +4,9 @@
   align-items: center;
   justify-content: center;
   padding: 40px;
-  background: linear-gradient(135deg, #1976d2, #a777e3);
+  
+  background: url(./public/mozilla-illustration-mozilla-firefox-vector-art-wallpaper-preview.jpg);
+  background-size: cover;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -24,9 +26,18 @@
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   border: 1px solid rgba(255, 255, 255, 0.18);
   overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.glassEffect:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.5);
+}
 
+.glassEffect:focus-within {
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.7);
+}
 
 @media (max-width: 768px) {
   .wrapper {
